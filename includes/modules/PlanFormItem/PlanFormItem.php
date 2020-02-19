@@ -1,13 +1,13 @@
 <?php
 
-class mrc_short_form_Item extends ET_Builder_Module {
+class mrc_plan_form_Item extends ET_Builder_Module {
 
 	public $additional_shortcode_slugs = array( 'acf_signup_custom_field' );
 
 	function init() {
-		$this->name            = esc_html__( 'MRC Field', 'et_builder' );
-		$this->plural          = esc_html__( 'MRC Fields', 'et_builder' );
-		$this->slug            = 'mrc_short_field';
+		$this->plural          = esc_html__( 'MRC Plan Form Fields', 'et_builder' );
+		$this->name            = esc_html__( 'MRC Plan Form Field', 'et_builder' );
+		$this->slug            = 'mrc_plan_form_field';
 		$this->vb_support      = 'on';
 		$this->type            = 'child';
 		$this->child_title_var = 'field_id';
@@ -855,4 +855,4 @@ class mrc_short_form_Item extends ET_Builder_Module {
 	}
 }
 
-new mrc_short_form_Item;
+new mrc_plan_form_Item;

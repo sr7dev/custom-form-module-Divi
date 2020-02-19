@@ -1,12 +1,12 @@
 <?php
 
-class mrc_health_saving_Module extends ET_Builder_Module {
+class mrc_plan_form_Module extends ET_Builder_Module {
 	function init() {
-		$this->name            = esc_html__( 'MRC Health Saving Hero', 'et_builder' );
-		$this->plural          = esc_html__( 'MRC Health Saving Heros', 'et_builder' );
-		$this->slug            = 'mrc_health-saving-hero';
+		$this->name            = esc_html__( 'MRC Plan Form', 'et_builder' );
+		$this->plural          = esc_html__( 'MRC Plan Forms', 'et_builder' );
+		$this->slug            = 'mrc_plan_form';
 		$this->vb_support      = 'on';
-		$this->child_slug      = 'mrc_short_field';
+		$this->child_slug      = 'mrc_plan_form_field';
 		$this->child_item_text = esc_html__( 'Field', 'et_builder' );
 		
 		
@@ -858,4 +858,4 @@ class mrc_health_saving_Module extends ET_Builder_Module {
 	}
 }
 
-new mrc_health_saving_Module;
+new mrc_plan_form_Module;

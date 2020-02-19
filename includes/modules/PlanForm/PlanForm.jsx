@@ -5,9 +5,9 @@ import React, { Component } from 'react';
 import '../style.css';
 
 
-class HealthSavingsHero extends Component {
+class PlanForm extends Component {
 
-	static slug = 'mrc_health-saving-hero';
+	static slug = 'mrc_plan_form';
 
 	_renderForm(){
 		const content = this.props.content;
@@ -46,4 +46,4 @@ class HealthSavingsHero extends Component {
 	}
 }
 
-export default HealthSavingsHero;
+export default PlanForm;

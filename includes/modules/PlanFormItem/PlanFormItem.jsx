@@ -5,9 +5,9 @@ import React, { Component } from 'react';
 import '../style.css';
 
 
-class ShortFormItem extends Component {
+class PlanFormItem extends Component {
 
-	static slug = 'mrc_short_field';
+	static slug = 'mrc_plan_form_field';
 
 	_renderItem(){
 		const field_type = this.props.field_type;
@@ -92,4 +92,4 @@ class ShortFormItem extends Component {
 	}
 }
 
-export default ShortFormItem;
+export default PlanFormItem;

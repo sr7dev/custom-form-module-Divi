@@ -1,5 +1,5 @@
 {
-  "name": "mrccta_v3",
+  "name": "mrcform",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -27,7 +27,7 @@
     ]
   },
   "cde": {
-    "gettext": "mrccta_v3",
+    "gettext": "mrcform",
     "prefix": "mrc"
   }
 }
