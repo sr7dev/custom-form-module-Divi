@@ -34,9 +34,9 @@ class PlanFormItem extends Component {
 			case 'label':
 				output = (
 					<label 
-						name={"mrc_short_" + field_id + "_" + current_module_num}
-						id={"mrc_short_" + field_id + "_" + current_module_num}
-						class="mrc_short_message input" 
+						name={"mrc_plan_" + field_id + "_" + current_module_num}
+						id={"mrc_plan_" + field_id + "_" + current_module_num}
+						class="mrc_plan_message input" 
 						data-required_mark={'off' === required_mark ? 'not_required' : 'required'} 
 						data-field_type={field_type} 
 						data-original_id={field_id}
@@ -47,22 +47,22 @@ class PlanFormItem extends Component {
 				break;
 			case 'radio':
 				var input_field = (
-					<span class="mrc_short_field_radio">
+					<span class="mrc_form_field_radio">
 					</span>
 				);
 				output = (
-					<span class="mrc_short_field_options_wrapper">
-						<span class="mrc_short_field_options_title">{field_title}</span>
-						<span class="mrc_short_field_options_list">{input_field}</span>
+					<span class="mrc_form_field_options_wrapper">
+						<span class="mrc_form_field_options_title">{field_title}</span>
+						<span class="mrc_form_field_options_list">{input_field}</span>
 					</span>
 				);
 				break;
 			case 'select':
 				output = (
 					<select 
-						id={"mrc_short_" + field_id + "_" + current_module_num} 
-						class="mrc_short_select input" 
-						name={"mrc_short_" + field_id + "_" + current_module_num} 
+						id={"mrc_plan_" + field_id + "_" + current_module_num} 
+						class="mrc_plan_select input" 
+						name={"mrc_plan_" + field_id + "_" + current_module_num} 
 						data-required_mark={required_mark}
 						data-field_type={field_type} 
 						data-original_id={field_id}
@@ -85,7 +85,7 @@ class PlanFormItem extends Component {
 
 		return (
 			<p class="error-message" data-id={field_id} data-type={field_type}>
-				<label for={"mrc_short_" + field_id + "_" + current_module_num} class="mrc_short_form_label">{field_title}</label>
+				<label for={"mrc_plan_" + field_id + "_" + current_module_num} class="mrc_plan_form_label">{field_title}</label>
 				{this._renderItem()}
 			</p>
 		);

@@ -16,8 +16,8 @@ class mrc_plan_form_Item extends ET_Builder_Module {
 		);
 		$this->settings_text = esc_html__( 'Field Settings', 'et_builder' );
 		$this->main_css_element = '
-			.mrc_short_form_container 
-			%%order_class%%.mrc_short_field
+			.mrc_plan_form_container 
+			%%order_class%%.mrc_form_field
 		';
 
 		$this->settings_modal_toggles = array(
@@ -65,7 +65,7 @@ class mrc_plan_form_Item extends ET_Builder_Module {
 							'%%order_class%% input',
 							'%%order_class%% select',
 							'%%order_class%% textarea',
-							'%%order_class%% .mrc_short_field_options_list 
+							'%%order_class%% .mrc_form_field_options_list 
 								label > i',
 						) ),
 					),
@@ -110,31 +110,31 @@ class mrc_plan_form_Item extends ET_Builder_Module {
 				'form_field' => array(
 					'label'          => esc_html__( 'Field', 'et_builder' ),
 					'css'            => array(
-						'main' => '%%order_class%%.mrc_short_field .input',
+						'main' => '%%order_class%%.mrc_form_field .input',
 						'background_color' => '
-							%%order_class%%.mrc_short_field .input, 
-							%%order_class%%.mrc_short_field 
+							%%order_class%%.mrc_form_field .input, 
+							%%order_class%%.mrc_form_field 
 							.input + label i
 						',
 						'background_color_hover' => '
-							%%order_class%%.mrc_short_field .input:hover, 
-							%%order_class%%.mrc_short_field 
+							%%order_class%%.mrc_form_field .input:hover, 
+							%%order_class%%.mrc_form_field 
 							.input + label:hover i
 						',
 						'focus_background_color' => '
-							%%order_class%%.mrc_short_field .input:focus, 
-							%%order_class%%.mrc_short_field 
+							%%order_class%%.mrc_form_field .input:focus, 
+							%%order_class%%.mrc_form_field 
 							.input:focus + label i
 						',
 						'focus_background_color_hover' => '
-							%%order_class%%.mrc_short_field .input:focus:hover, 
-							%%order_class%%.mrc_short_field 
+							%%order_class%%.mrc_form_field .input:focus:hover, 
+							%%order_class%%.mrc_form_field 
 							.input:focus + label:hover i
 						',
 					),
 					'margin_padding' => array(
 						'css'	=> array(
-							'main' => '%%order_class%%  .mrc_short_field_radio',
+							'main' => '%%order_class%%  .mrc_form_field_radio',
 						),
 					),
 					'box_shadow'     => false,
@@ -142,7 +142,7 @@ class mrc_plan_form_Item extends ET_Builder_Module {
 					'font_field'     => array(
 						'css' => array(
 							'main'      => implode( ',', array(
-								'%%order_class%% .mrc_short_field .mrc_short_field_radio',
+								'%%order_class%% .mrc_form_field .mrc_form_field_radio',
 								"{$this->main_css_element} .input",
 								"{$this->main_css_element} .input::placeholder",
 								"{$this->main_css_element} 
@@ -174,7 +174,7 @@ class mrc_plan_form_Item extends ET_Builder_Module {
 		$this->custom_css_fields = array(
 			'date_select' => array(
 				'label'    => esc_html__( 'Date Dropdown Size', 'et_builder' ),
-				'selector' => '.mrc_short_field select',
+				'selector' => '.mrc_form_field select',
 			),
 			
 		);
@@ -379,8 +379,8 @@ class mrc_plan_form_Item extends ET_Builder_Module {
 
 		$fields['form_field_background_color'] = array(
 			'background' => implode( ', ', array(
-				'%%order_class%%.mrc_short_field .input',
-				'%%order_class%%.mrc_short_field .input + label:hover i'
+				'%%order_class%%.mrc_form_field .input',
+				'%%order_class%%.mrc_form_field .input + label:hover i'
 			) )
 		);
 
@@ -388,7 +388,7 @@ class mrc_plan_form_Item extends ET_Builder_Module {
 	}
 
 	function render( $attrs, $content = null, $render_slug ) {
-		global $mrc_short_form_num;
+		global $mrc_plan_form_num;
 
 		et_core_nonce_verified_previously();
 
@@ -407,7 +407,7 @@ class mrc_plan_form_Item extends ET_Builder_Module {
 		$conditional_logic_rules    = $this->props['conditional_logic_rules'];
 		$allowed_symbols            = $this->props['allowed_symbols'];
 		$render_count               = $this->render_count();
-		$current_module_num         = null === $mrc_short_form_num ? 0 : intval( $mrc_short_form_num ) + 1;
+		$current_module_num         = null === $mrc_plan_form_num ? 0 : intval( $mrc_plan_form_num ) + 1;
 
 		wp_enqueue_style( 
 			'acf-short-form', 
@@ -418,7 +418,7 @@ class mrc_plan_form_Item extends ET_Builder_Module {
 		if ( '' === $field_id ) {
 			$field_id = sprintf( 
 				'field_%d_%d', 
-				$mrc_short_form_num, $render_count 
+				$mrc_plan_form_num, $render_count 
 			);
 		}
 
@@ -579,7 +579,7 @@ class mrc_plan_form_Item extends ET_Builder_Module {
 			case 'input':
 				$input_field = sprintf(
 					'<div>
-						<input id="mrc_short_%2$s_%1$s" pattern="[0-9]{5}">
+						<input id="mrc_plan_%2$s_%1$s" pattern="[0-9]{5}">
 					</div>',
 					esc_attr( $field_id ),
 					esc_attr( $field_type )
@@ -588,7 +588,7 @@ class mrc_plan_form_Item extends ET_Builder_Module {
 			case 'datepicker':
 				$input_field = sprintf(
 					'<div>
-						<input id="mrc_short_%2$s_%1$s" type="date" max="2002-12-31" min="1919-01-01">
+						<input id="mrc_plan_%2$s_%1$s" type="date" max="2002-12-31" min="1919-01-01">
 					</div>',
 					esc_attr( $field_id ),
 					esc_attr( $field_type )
@@ -596,7 +596,7 @@ class mrc_plan_form_Item extends ET_Builder_Module {
 				break;
 			case 'gendersel':
 				$input_field = sprintf(
-					'<div class="switch-field" id="mrc_short_%2$s_%1$s">
+					'<div class="switch-field" id="mrc_plan_%2$s_%1$s">
 						<input type="radio" id="radio-male" name="gender" value="male"/>
 						<label for="radio-male" class="check-gender-v3">Male</label>
 						<input type="radio" id="radio-female" name="gender" value="female" />
@@ -609,9 +609,9 @@ class mrc_plan_form_Item extends ET_Builder_Module {
 			case 'label':
 				$input_field = sprintf(
 					'<label 
-						name="mrc_short_%3$s_%2$s" 
-						id="mrc_short_%3$s_%2$s" 
-						class="mrc_short_message input" 
+						name="mrc_plan_%3$s_%2$s" 
+						id="mrc_plan_%3$s_%2$s" 
+						class="mrc_plan_message input" 
 						data-required_mark="%6$s" 
 						data-field_type="%4$s" 
 						data-original_id="%3$s"
@@ -620,13 +620,13 @@ class mrc_plan_form_Item extends ET_Builder_Module {
 					</label>',
 					( isset( 
 						$_POST[
-							'mrc_short_' . 
+							'mrc_plan_' . 
 							$field_id . 
 							'_' . 
 							$current_module_num
 						] ) 
 						? esc_html( sanitize_text_field( 
-							$_POST['mrc_short_' . 
+							$_POST['mrc_plan_' . 
 								$field_id . 
 								'_' . 
 								$current_module_num] ) ) 
@@ -678,20 +678,20 @@ class mrc_plan_form_Item extends ET_Builder_Module {
 						}
 
 						$input_field .= sprintf(
-							'<span class="mrc_short_field_radio">
+							'<span class="mrc_form_field_radio">
 								<input 
 									type="radio" 
-									id="mrc_short_%3$s_%2$s_%10$s_%7$s" 
+									id="mrc_plan_%3$s_%2$s_%10$s_%7$s" 
 									class="input" 
 									value="%8$s" 
-									name="mrc_short_%3$s_%2$s" 
+									name="mrc_plan_%3$s_%2$s" 
 									data-required_mark="%6$s" 
 									data-field_type="%4$s" 
 									data-original_id="%3$s" 
 									%9$s%11$s
 								>
 								<label 
-									for="mrc_short_%3$s_%2$s_%10$s_%7$s" 
+									for="mrc_plan_%3$s_%2$s_%10$s_%7$s" 
 									class="check-gender"
 								>
 									%8$s%12$s
@@ -699,14 +699,14 @@ class mrc_plan_form_Item extends ET_Builder_Module {
 							</span>',
 							( isset( 
 								$_POST[
-									'mrc_short_' . 
+									'mrc_plan_' . 
 									$field_id . 
 									'_' . 
 									$current_module_num
 								] ) 
 								? esc_attr( sanitize_text_field( 
 									$_POST[
-										'mrc_short_' . 
+										'mrc_plan_' . 
 										$field_id . 
 										'_' . 
 										$current_module_num
@@ -736,9 +736,9 @@ class mrc_plan_form_Item extends ET_Builder_Module {
 				}
 
 				$input_field = sprintf(
-					'<span class="mrc_short_field_options_wrapper">
-						<span class="mrc_short_field_options_title">%1$s</span>
-						<span class="mrc_short_field_options_list">%2$s</span>
+					'<span class="mrc_form_field_options_wrapper">
+						<span class="mrc_form_field_options_title">%1$s</span>
+						<span class="mrc_form_field_options_list">%2$s</span>
 					</span>',
 					esc_html( $field_title ),
 					$input_field
@@ -779,9 +779,9 @@ class mrc_plan_form_Item extends ET_Builder_Module {
 
 				$input_field = sprintf(
 					'<select 
-						id="mrc_short_%3$s_%2$s" 
-						class="mrc_short_select input" 
-						name="mrc_short_%3$s_%2$s" 
+						id="mrc_plan_%3$s_%2$s" 
+						class="mrc_plan_select input" 
+						name="mrc_plan_%3$s_%2$s" 
 						data-required_mark="%6$s" 
 						data-field_type="%4$s" 
 						data-original_id="%3$s"
@@ -790,14 +790,14 @@ class mrc_plan_form_Item extends ET_Builder_Module {
 					</select>',
 					( isset( 
 						$_POST[
-							'mrc_short_' . 
+							'mrc_plan_' . 
 							$field_id . 
 							'_' . 
 							$current_module_num
 						] ) 
 						? esc_attr( sanitize_text_field( 
 							$_POST[
-								'mrc_short_' . 
+								'mrc_plan_' . 
 								$field_id . 
 								'_' . 
 								$current_module_num
@@ -822,13 +822,13 @@ class mrc_plan_form_Item extends ET_Builder_Module {
 		) );
 
 		if ( 'off' === $full_width ) {
-			$this->add_classname( 'mrc_short_field_not_full_width' );
+			$this->add_classname( 'mrc_form_field_not_full_width' );
 		} else {
-			$this->add_classname( 'mrc_short_field_full_width' );
+			$this->add_classname( 'mrc_form_field_full_width' );
 		}
 		
 		if ( 'label' === $field_type ) {
-			$this->add_classname( 'mrc_short_field_label_mobile' );
+			$this->add_classname( 'mrc_form_field_label_mobile' );
 		}
 		// Remove automatically added classname
 		$this->remove_classname( 'et_pb_module' );
@@ -837,7 +837,7 @@ class mrc_plan_form_Item extends ET_Builder_Module {
 			'<p id="mrc_health_saving_%3$s_p" class="%5$s error-message"%6$s data-id="%3$s" data-type="%7$s">
 				%9$s
 				%8$s
-				<label for="mrc_short_%3$s_%2$s" id="mrc_health_saving_%3$s_label" class="mrc_short_form_label">%1$s</label>
+				<label for="mrc_plan_%3$s_%2$s" id="mrc_health_saving_%3$s_label" class="mrc_plan_form_label">%1$s</label>
 				%4$s
 			</p>',
 			esc_html( $field_title ),

@@ -15,8 +15,8 @@ jQuery(document).ready(function ($) {
 		send_first_step_v2(zip);
 	}
 
-	function validate_short_form_fields_v3() {
-		$('#mrc_health_savings_form_0 [name=gender], #mrc_health_savings_form_0 #mrc_short_input_zipcode, #mrc_health_savings_form_0 #mrc_short_datepicker_birthdate').each(function () {
+	function validate_plan_form_fields_v3() {
+		$('#mrc_health_savings_form_0 [name=gender], #mrc_health_savings_form_0 #mrc_plan_input_zipcode, #mrc_health_savings_form_0 #mrc_plan_datepicker_birthdate').each(function () {
 			let fields = $(this).closest('.error-message');
 			let att_name = $(this).attr('name');
 			let error_msg = "Field is required";
@@ -31,7 +31,7 @@ jQuery(document).ready(function ($) {
 					$(this).removeClass('has-error');
 					$(this).parent().find('.check-gender-v3').removeClass('has-error');
 				}
-			} else if ($(this).attr('id').localeCompare('mrc_short_input_zipcode') == 0) {
+			} else if ($(this).attr('id').localeCompare('mrc_plan_input_zipcode') == 0) {
 				let zip_pattern = /^\d{5}$/;
 				error_msg = 'Enter valid ZIP code';
 				
@@ -73,18 +73,18 @@ jQuery(document).ready(function ($) {
 
 	$('#mrc_health_savings_hero_homepage_form').submit(multit_form_submit_v3);
 	function multit_form_submit_v3() {
-		let has_errors = validate_short_form_fields_v3();
+		let has_errors = validate_plan_form_fields_v3();
 
 		if (!validate_trigger) {
-			$('#mrc_health_savings_form_0 [name=switch-one], #mrc_health_savings_form_0 #mrc_short_input_zipcode, #mrc_health_savings_form_0 #mrc_short_datepicker_birthdate').change(function () {
-				let has_errors = validate_short_form_fields_v3();
+			$('#mrc_health_savings_form_0 [name=switch-one], #mrc_health_savings_form_0 #mrc_plan_input_zipcode, #mrc_health_savings_form_0 #mrc_plan_datepicker_birthdate').change(function () {
+				let has_errors = validate_plan_form_fields_v3();
 			});
 
 			validate_trigger = true;
 		}
 		if ($('#mrc_health_savings_hero_homepage_form .has-error').length == 0) {
-						let bd = $('#mrc_short_datepicker_birthdate').val();
-						let zipcode = $('#mrc_short_input_zipcode').val();
+						let bd = $('#mrc_plan_datepicker_birthdate').val();
+						let zipcode = $('#mrc_plan_input_zipcode').val();
 						let ref = '';
 						let arrival_id = resultsDIV.data('arrival');
 						$(this).append('<input type="hidden" name="birthday" value="' + bd + '">');
@@ -97,13 +97,13 @@ jQuery(document).ready(function ($) {
 
 	$('#submitShortForm_v2').click(short_contact_form_submit_v2);
 
-	function validate_short_form_fields_v2() {
-		$('#mrc_short_form_0 select, #mrc_short_form_0 #zip, #mrc_short_form_0 [name=mrc_short_genderoption_0]').each(function () {
+	function validate_plan_form_fields_v2() {
+		$('#mrc_plan_form_0 select, #mrc_plan_form_0 #zip, #mrc_plan_form_0 [name=mrc_plan_genderoption_0]').each(function () {
 			let fields = $(this).closest('.error-message');
 			let att_name = $(this).attr('name');
 			let error_msg = "Field is required";
-			if (typeof att_name !== typeof undefined && att_name !== false && $(this).attr('name').localeCompare('mrc_short_genderoption_0') == 0) {
-				if ($('[name=mrc_short_genderoption_0]:checked').length == 0) {
+			if (typeof att_name !== typeof undefined && att_name !== false && $(this).attr('name').localeCompare('mrc_plan_genderoption_0') == 0) {
+				if ($('[name=mrc_plan_genderoption_0]:checked').length == 0) {
 					$(this).parent().find('.check-gender').addClass('has-error');
 					$(this).addClass( 'has-error' );
 					has_error = true;
@@ -128,9 +128,9 @@ jQuery(document).ready(function ($) {
 			} else if (!$(this).val() || $(this).val() == '') {
 				$(this).addClass('has-error');
 				has_error = true;
-				if ($(this).attr('id').localeCompare('mrc_short_month_0') == 0) {
+				if ($(this).attr('id').localeCompare('mrc_plan_month_0') == 0) {
 					error_msg = "Select month";
-				} else if ($(this).attr('id').localeCompare('mrc_short_day_0') == 0) {
+				} else if ($(this).attr('id').localeCompare('mrc_plan_day_0') == 0) {
 					error_msg = "Select day";
 				} else {
 					error_msg = "Select year";
@@ -141,13 +141,13 @@ jQuery(document).ready(function ($) {
 				$(this).removeClass('has-error');
 			}
 
-			let ffa = fields.find('.mrc_short_error_text');
+			let ffa = fields.find('.mrc_plan_error_text');
 			if (has_error) {
 				if (ffa.length == 0) {
 					if (error_msg == "Select gender")
-						fields.append('<p class="mrc_short_error_text" style="margin-left: 30%;">' + error_msg + '</p>');
+						fields.append('<p class="mrc_plan_error_text" style="margin-left: 30%;">' + error_msg + '</p>');
 					else
-						fields.append('<p class="mrc_short_error_text">' + error_msg + '</p>');
+						fields.append('<p class="mrc_plan_error_text">' + error_msg + '</p>');
 				}
 				setTimeout(()=>{$(".overlay").removeClass("open");},500);
 				$(".overlay").addClass("hide");
@@ -162,11 +162,11 @@ jQuery(document).ready(function ($) {
 
 	function short_contact_form_submit_v2() {
 		if (!$(this).hasClass('sending')) {
-			let has_error_local = validate_short_form_fields_v3();
+			let has_error_local = validate_plan_form_fields_v3();
 			
 			if (!validate_trigger) {
-				$('#mrc_health_savings_form_0 [name=switch-one], #mrc_health_savings_form_0 #mrc_short_input_zipcode, #mrc_health_savings_form_0 #mrc_short_datepicker_birthdate').change(function () {
-					let has_errors = validate_short_form_fields_v3();
+				$('#mrc_health_savings_form_0 [name=switch-one], #mrc_health_savings_form_0 #mrc_plan_input_zipcode, #mrc_health_savings_form_0 #mrc_plan_datepicker_birthdate').change(function () {
+					let has_errors = validate_plan_form_fields_v3();
 				});
 	
 				validate_trigger = true;
@@ -178,11 +178,11 @@ jQuery(document).ready(function ($) {
 			if ($('#mrc_health_savings_form_0 .has-error').length == 0) {
 				data = {
 					arrival_id: resultsDIV.data('arrival'),
-					birthday: $('#mrc_short_datepicker_birthdate').val(),//$('#mrc_short_year_0').val() + '-' + $('#mrc_short_month_0').val() + '-' + $('#mrc_short_day_0').val(),
+					birthday: $('#mrc_plan_datepicker_birthdate').val(),//$('#mrc_plan_year_0').val() + '-' + $('#mrc_plan_month_0').val() + '-' + $('#mrc_plan_day_0').val(),
 					pageName: window.location.pathname,
-					zip: $('#mrc_short_input_zipcode').val(),//$('#zip').val(),
+					zip: $('#mrc_plan_input_zipcode').val(),//$('#zip').val(),
 					gender: ($('[name=gender]:checked').val()).substring(0, 1),
-					action: 'short_form_handler_v2'
+					action: 'plan_form_handler_v2'
 				};
 				$.ajax({
 					url: "/wp-admin/admin-ajax.php",
@@ -211,9 +211,9 @@ jQuery(document).ready(function ($) {
 		}
 	}
 
-	var birth_day = $('#mrc_short_day_0');
-		birth_month = $('#mrc_short_month_0');
-		birth_year = $('#mrc_short_year_0');
+	var birth_day = $('#mrc_plan_day_0');
+		birth_month = $('#mrc_plan_month_0');
+		birth_year = $('#mrc_plan_year_0');
 	var months_days = {
 		1: {days: 31, name: 'Jan'},
 		2: {days: 29, name: 'Feb'},
@@ -248,7 +248,7 @@ jQuery(document).ready(function ($) {
 		birth_year.append( '<option value="' + i + '">' + i + '</option>' );
 	}
 
-	$('#mrc_short_month_0').change(function () {
+	$('#mrc_plan_month_0').change(function () {
 		var val = $(this).val();
 		if (val !== '') {
 			if (birth_day.val() !== '') {
@@ -275,7 +275,7 @@ jQuery(document).ready(function ($) {
 
 	});
 
-	$('#mrc_short_year_0').change(function () {
+	$('#mrc_plan_year_0').change(function () {
 		if (birth_month.val() == 2) {
 			if ((birth_year.val() % 4) > 0) {
 				var max_date = 28;
@@ -307,7 +307,7 @@ jQuery(document).ready(function ($) {
 
 	});
 
-	$('#mrc_short_day_0').change(function () {
+	$('#mrc_plan_day_0').change(function () {
 		$('#birthdate').val(birth_month.val() + '/' + birth_day.val() + '/' + birth_year.val());
 	});
 
@@ -399,7 +399,7 @@ jQuery(document).ready(function ($) {
 		// adding Event to Execute second Ajax Post, fire the event based in a class and not an ID in order to allow multiple buttons
 		// in one page
 
-		jQuery('.mrc_short_submit').click(function (e) {
+		jQuery('.mrc_plan_submit').click(function (e) {
 			var tmp_zip = $(this).parent().parent().parent().find('.acf_contactform_validate_field');
 			if (tmp_zip)
 				tmp_zip = tmp_zip.val();

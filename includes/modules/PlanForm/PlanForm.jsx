@@ -34,8 +34,8 @@ class PlanForm extends Component {
 	}
 
 	render() {
-		// const mrc_short_form_num = this.props.mrc_short_form_num;
-		// const module_id = '' !== this.module_id(false) ? this.module_id(false) : 'mrc_short_form_' + mrc_short_form_num;
+		// const mrc_plan_form_num = this.props.mrc_plan_form_num;
+		// const module_id = '' !== this.module_id(false) ? this.module_id(false) : 'mrc_plan_form_' + mrc_plan_form_num;
 		
 		// const Content = this.props.content;
 		return (

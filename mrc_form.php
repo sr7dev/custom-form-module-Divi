@@ -50,8 +50,8 @@ function mrcform_initialize_extension() {
 add_action( 'divi_extensions_init', 'mrcform_initialize_extension' );
 endif;
 
-// add_action('wp_ajax_short_form_handler_v2', 'short_form_handler_v2');
-// add_action('wp_ajax_nopriv_short_form_handler_v2', 'short_form_handler_v2');
+// add_action('wp_ajax_plan_form_handler_v2', 'plan_form_handler_v2');
+// add_action('wp_ajax_nopriv_plan_form_handler_v2', 'plan_form_handler_v2');
 
 // add_action('wp_ajax_get_city_by_zip_v2', 'get_city_by_zip_v2');
 // add_action('wp_ajax_nopriv_get_city_by_zip_v2', 'get_city_by_zip_v2');
@@ -87,7 +87,7 @@ endif;
 // 	}
 // }
 
-// function short_form_handler_v2()
+// function plan_form_handler_v2()
 // {
 // 	$ip = getIP_v2();
 // 	$headers = getApiHeader_v2();

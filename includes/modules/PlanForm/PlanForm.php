@@ -776,7 +776,7 @@ class mrc_plan_form_Module extends ET_Builder_Module {
 						%4$s
 					</form>
 				</div> <!-- .mrc_short -->',
-				"short_form_handler",
+				"plan_form_handler",
 				(  'on' === $captcha ? $mrc_captcha : '' ),
 				esc_html( $submit_button_text ),
 				// wp_nonce_field( 
